@@ -6,6 +6,7 @@
   <meta name="theme-color" content="#e8f4ff">
   <title>Mr.Osama Ibrahim | منصة الفيزياء والعلوم المتكاملة</title>
   <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div id="app">
@@ -22,7 +23,10 @@
 
     <main>
       <section id="welcome" class="welcome-shell">
-        <div class="formula-strip" aria-hidden="true"><span>E = mc²</span><span>F = ma</span><span>⚛</span></div>
+        <div class="formula-strip" aria-hidden="true">
+          <span>E = mc²</span><span>F = ma</span><span>⚛</span>
+        </div>
+
         <div class="hero-card">
           <div class="eyebrow">✦ الفيزياء والعلوم المتكاملة بطريقة مختلفة</div>
           <h1>ابدأ المذاكرة<br><span>دلوقتي!</span></h1>
@@ -31,45 +35,108 @@
             <button id="showLogin" class="primary-btn">تسجيل الدخول <span>←</span></button>
             <button id="showSignup" class="secondary-btn">إنشاء حساب جديد</button>
           </div>
-          <div class="notice">🔒 محتوى المنصة متاح للطلاب المسجلين وبعد موافقة المدرّس فقط.</div>
+          <div class="notice">🔒 محتوى المنصة متاح للطلاب بعد موافقة المدرّس فقط.</div>
         </div>
+
         <div class="auth-grid">
           <section id="loginCard" class="panel auth-card">
             <div class="section-kicker">مرحبًا بعودتك</div>
             <h2>تسجيل الدخول</h2>
-            <p class="muted">ادخل برقم هاتفك وكلمة المرور.</p>
+            <p class="muted">ادخل ببريدك الإلكتروني وكلمة المرور.</p>
+
             <form id="loginForm">
-              <label>رقم الهاتف<input id="loginPhone" type="tel" inputmode="tel" autocomplete="username" placeholder="01xxxxxxxxx" required></label>
-              <label>كلمة المرور<input id="loginPassword" type="password" autocomplete="current-password" placeholder="اكتب كلمة المرور" required></label>
+              <label>البريد الإلكتروني
+                <input id="loginEmail" type="email" autocomplete="email"
+                  placeholder="name@example.com" required>
+              </label>
+              <label>كلمة المرور
+                <input id="loginPassword" type="password"
+                  autocomplete="current-password" placeholder="اكتب كلمة المرور" required>
+              </label>
               <button class="primary-btn full" type="submit">دخول إلى حسابي</button>
               <p id="loginMessage" class="form-message" aria-live="polite"></p>
             </form>
           </section>
+
           <section id="signupCard" class="panel auth-card">
             <div class="section-kicker">خطوة جديدة نحو التفوق</div>
             <h2>إنشاء حساب طالب</h2>
             <p class="muted">املأ بياناتك بدقة. الحساب يحتاج موافقة المدرّس قبل فتح المحتوى.</p>
+
             <form id="signupForm">
-              <label>الاسم الرباعي<input id="fullName" autocomplete="name" placeholder="الاسم رباعي" required minlength="8"></label>
+              <label>الاسم الرباعي
+                <input id="fullName" autocomplete="name" placeholder="الاسم رباعي"
+                  required minlength="8">
+              </label>
+
+              <label>البريد الإلكتروني
+                <input id="signupEmail" type="email" autocomplete="email"
+                  placeholder="name@example.com" required>
+              </label>
+
               <div class="two-col">
-                <label>رقم هاتف الطالب<input id="studentPhone" type="tel" inputmode="tel" placeholder="01xxxxxxxxx" required></label>
-                <label>رقم هاتف ولي الأمر<input id="parentPhone" type="tel" inputmode="tel" placeholder="01xxxxxxxxx" required></label>
+                <label>رقم هاتف الطالب
+                  <input id="studentPhone" type="tel" inputmode="tel"
+                    autocomplete="tel" placeholder="01xxxxxxxxx" required>
+                </label>
+                <label>رقم هاتف ولي الأمر
+                  <input id="parentPhone" type="tel" inputmode="tel"
+                    placeholder="01xxxxxxxxx" required>
+                </label>
               </div>
+
               <div class="two-col">
-                <label>المحافظة<select id="governorate" required><option value="">اختر المحافظة</option><option>القاهرة</option><option>الجيزة</option><option>الإسكندرية</option><option>القليوبية</option><option>الشرقية</option><option>الدقهلية</option><option>الغربية</option><option>المنوفية</option><option>البحيرة</option><option>كفر الشيخ</option><option>دمياط</option><option>بورسعيد</option><option>الإسماعيلية</option><option>السويس</option><option>شمال سيناء</option><option>جنوب سيناء</option><option>بني سويف</option><option>الفيوم</option><option>المنيا</option><option>أسيوط</option><option>سوهاج</option><option>قنا</option><option>الأقصر</option><option>أسوان</option><option>البحر الأحمر</option><option>الوادي الجديد</option><option>مطروح</option></select></label>
-                <label>المدينة<input id="city" placeholder="اسم المدينة أو المركز" required></label>
+                <label>المحافظة
+                  <select id="governorate" required>
+                    <option value="">اختر المحافظة</option>
+                    <option>القاهرة</option><option>الجيزة</option>
+                    <option>الإسكندرية</option><option>القليوبية</option>
+                    <option>الشرقية</option><option>الدقهلية</option>
+                    <option>الغربية</option><option>المنوفية</option>
+                    <option>البحيرة</option><option>كفر الشيخ</option>
+                    <option>دمياط</option><option>بورسعيد</option>
+                    <option>الإسماعيلية</option><option>السويس</option>
+                    <option>شمال سيناء</option><option>جنوب سيناء</option>
+                    <option>بني سويف</option><option>الفيوم</option>
+                    <option>المنيا</option><option>أسيوط</option>
+                    <option>سوهاج</option><option>قنا</option>
+                    <option>الأقصر</option><option>أسوان</option>
+                    <option>البحر الأحمر</option><option>الوادي الجديد</option>
+                    <option>مطروح</option>
+                  </select>
+                </label>
+                <label>المدينة
+                  <input id="city" placeholder="اسم المدينة أو المركز" required>
+                </label>
               </div>
-              <label>الرقم القومي<input id="nationalId" inputmode="numeric" maxlength="14" placeholder="14 رقمًا" required></label>
+
+              <label>الصف الدراسي
+                <select id="grade" required>
+                  <option value="">اختر الصف</option>
+                  <option value="أولى ثانوي">الأول الثانوي</option>
+                  <option value="تانية ثانوي">الثاني الثانوي</option>
+                  <option value="تالتة ثانوي">الثالث الثانوي</option>
+                </select>
+              </label>
+
               <div class="two-col">
-                <label>الصف الدراسي<select id="grade" required><option value="">اختر الصف</option><option value="أولى ثانوي">الأول الثانوي</option><option value="تانية ثانوي">الثاني الثانوي</option><option value="تالتة ثانوي">الثالث الثانوي</option></select></label>
-                <span class="field-spacer"></span>
+                <label>كلمة المرور
+                  <input id="signupPassword" type="password"
+                    autocomplete="new-password" minlength="8"
+                    placeholder="8 أحرف على الأقل" required>
+                </label>
+                <label>تأكيد كلمة المرور
+                  <input id="confirmPassword" type="password"
+                    autocomplete="new-password" minlength="8"
+                    placeholder="أعد كتابة كلمة المرور" required>
+                </label>
               </div>
-              <div class="two-col">
-                <label>كلمة المرور<input id="signupPassword" type="password" autocomplete="new-password" minlength="8" placeholder="8 أحرف على الأقل" required></label>
-                <label>تأكيد كلمة المرور<input id="confirmPassword" type="password" autocomplete="new-password" minlength="8" placeholder="أعد كتابة كلمة المرور" required></label>
-              </div>
-              <label class="consent"><input id="dataConsent" type="checkbox" required> أوافق على استخدام بياناتي لإنشاء الحساب وإدارته وفق سياسة الخصوصية.</label>
-              <button class="primary-btn full" type="submit">إرسال طلب إنشاء الحساب</button>
+
+              <label class="consent">
+                <input id="dataConsent" type="checkbox" required>
+                أوافق على استخدام بياناتي لإنشاء الحساب وإدارته وفق سياسة الخصوصية.
+              </label>
+              <button class="primary-btn full" type="submit">إنشاء الحساب</button>
               <p id="signupMessage" class="form-message" aria-live="polite"></p>
             </form>
           </section>
@@ -77,9 +144,10 @@
       </section>
 
       <section id="pendingView" class="state-view hidden">
-        <div class="state-icon">⌛</div><p class="section-kicker">طلبك وصل بنجاح</p>
+        <div class="state-icon">⌛</div>
+        <p class="section-kicker">طلبك وصل بنجاح</p>
         <h1>حسابك في انتظار موافقة المستر</h1>
-        <p>بعد مراجعة طلبك والموافقة عليه، هتقدر تدخل للكورسات والاختبارات المناسبة لصفك الدراسي.</p>
+        <p>لو لسه ما أكدتش بريدك، افتح رسالة التأكيد أولًا. بعد التأكيد وموافقة المدرّس، هتقدر تدخل للكورسات المناسبة لصفك.</p>
         <button id="pendingLogout" class="secondary-btn">العودة لتسجيل الدخول</button>
       </section>
 
@@ -94,7 +162,10 @@
           </div>
           <div class="atom-art" aria-hidden="true"><span>⚛</span><small>E = mc²</small></div>
         </div>
-        <div class="dashboard-heading"><div><p class="section-kicker">مساحتك التعليمية</p><h2>ماذا ستذاكر اليوم؟</h2></div><span id="gradeBadge" class="grade-badge"></span></div>
+        <div class="dashboard-heading">
+          <div><p class="section-kicker">مساحتك التعليمية</p><h2>ماذا ستذاكر اليوم؟</h2></div>
+          <span id="gradeBadge" class="grade-badge"></span>
+        </div>
         <nav class="bottom-nav" aria-label="التنقل">
           <button class="nav-item active" data-view="home"><span>⌂</span>الرئيسية</button>
           <button class="nav-item" data-view="courses"><span>▤</span>الكورسات</button>
@@ -108,17 +179,25 @@
 
       <section id="teacherView" class="hidden">
         <div class="teacher-banner">
-          <div><p class="section-kicker">لوحة إدارة المنصة</p><h1>أهلًا يا مستر أسامة 👋</h1><p>إدارة طلبات الطلاب والمحتوى التعليمي.</p></div>
+          <div>
+            <p class="section-kicker">لوحة إدارة المنصة</p>
+            <h1>أهلًا يا مستر أسامة 👋</h1>
+            <p>إدارة طلبات الطلاب والمحتوى التعليمي.</p>
+          </div>
           <span class="admin-symbol">⚙</span>
         </div>
-        <div class="warning-panel"><b>إعداد مطلوب قبل التشغيل الحقيقي</b><p>واجهة لوحة التحكم جاهزة للتصميم، لكن اعتماد الطلاب وتخزين البيانات بشكل آمن يحتاجان ربط قاعدة بيانات وخادم موثوق. لن يتم حفظ كلمات المرور أو الرقم القومي في هذا الموقع التجريبي.</p></div>
+        <div class="warning-panel">
+          <b>لوحة الإدارة</b>
+          <p>واجهة الإدارة الحالية لا تعتمد الطلاب تلقائيًا. يلزم إعداد صلاحيات المدرّس في قاعدة البيانات قبل تفعيل الموافقات.</p>
+        </div>
         <div class="admin-grid">
-          <article class="panel"><h3>طلبات التسجيل</h3><p class="muted">ستظهر هنا الطلبات بعد ربط قاعدة البيانات الآمنة.</p><div class="empty-state">لا توجد بيانات متصلة حاليًا.</div></article>
-          <article class="panel"><h3>إدارة المحتوى</h3><p class="muted">إضافة دروس وكورسات واختبارات حسب الصف الدراسي.</p><div class="empty-state">سيتم تفعيل الإدارة بعد إعداد الخادم.</div></article>
+          <article class="panel"><h3>طلبات التسجيل</h3><p class="muted">ستظهر بعد إعداد صلاحيات قاعدة البيانات.</p><div class="empty-state">الإدارة غير مفعّلة بالكامل بعد.</div></article>
+          <article class="panel"><h3>إدارة المحتوى</h3><p class="muted">إضافة دروس وكورسات واختبارات حسب الصف الدراسي.</p><div class="empty-state">الإدارة غير مفعّلة بالكامل بعد.</div></article>
         </div>
         <button id="teacherLogout" class="secondary-btn">تسجيل الخروج</button>
       </section>
     </main>
+
     <footer><span>Mr.Osama Ibrahim</span><span>الفيزياء والعلوم المتكاملة</span></footer>
   </div>
   <div id="toast" role="status" class="toast hidden"></div>
