@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#10233f">
+  <title>Mr.Osama Ibrahim | منصتك التعليمية</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#" aria-label="الصفحة الرئيسية">
+      <span class="brand-mark">M</span>
+      <span><strong>Mr.Osama Ibrahim</strong><small>نتعلّم اليوم لنصنع الغد</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="فتح القائمة">☰</button>
+    <nav id="mainNav">
+      <button class="nav-link active" data-page="home">الرئيسية</button>
+      <button class="nav-link" data-page="lessons">الدروس</button>
+      <button class="nav-link" data-page="quiz">الاختبارات</button>
+      <button class="nav-link" data-page="tutor">المساعد التعليمي</button>
+      <button class="nav-link" data-page="teacher">لوحة المدرّس</button>
+    </nav>
+    <button class="profile-button" id="profileButton">👤 <span id="profileLabel">ملفي</span></button>
+  </header>
+
+  <main>
+    <section class="hero" id="homeHero">
+      <div class="hero-copy">
+        <span class="eyebrow">منصتك التعليمية المجانية</span>
+        <h1>كل يوم فرصة<br><span>لتتعلّم شيئًا جديدًا.</span></h1>
+        <p>دروس مبسّطة، اختبارات تفاعلية، ومساعد يساعدك على فهم الفكرة خطوة بخطوة.</p>
+        <div class="hero-actions">
+          <button class="btn btn-primary" data-goto="lessons">ابدأ التعلّم <span>←</span></button>
+          <button class="btn btn-light" data-goto="quiz">اختبر معلوماتك</button>
+        </div>
+        <div class="hero-note"><span class="live-dot"></span> تعلّم على مهلك، وتقدّم خطوة بخطوة</div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div>
+        <div class="book book-back"></div><div class="book book-front"><span>أ</span><small>المعرفة<br>قوة</small></div>
+        <div class="floating-card card-check">✓ <span>إنجاز جديد</span></div>
+        <div class="floating-card card-star">✦ <span>فضولك هو البداية</span></div>
+      </div>
+    </section>
+
+    <section class="page-section" id="homePage">
+      <div class="section-heading">
+        <div><span class="eyebrow">مساحتك الخاصة</span><h2>مرحبًا بك في رحلتك التعليمية</h2><p>اختر ما تريد تعلّمه اليوم.</p></div>
+        <div class="progress-chip">تقدّمك <strong id="homeProgress">0%</strong></div>
+      </div>
+      <div class="stats-grid">
+        <article class="stat-card"><span class="stat-icon purple">▤</span><div><small>الدروس المتاحة</small><strong id="lessonCount">3</strong></div></article>
+        <article class="stat-card"><span class="stat-icon orange">✓</span><div><small>الاختبارات المكتملة</small><strong id="quizCount">0</strong></div></article>
+        <article class="stat-card"><span class="stat-icon green">✦</span><div><small>أفضل نتيجة</small><strong id="bestScore">—</strong></div></article>
+      </div>
+      <div class="section-heading compact"><div><span class="eyebrow">ابدأ من هنا</span><h2>ماذا تريد أن تفعل؟</h2></div></div>
+      <div class="feature-grid">
+        <button class="feature-card" data-goto="lessons"><span class="feature-icon blue">▤</span><strong>تصفّح الدروس</strong><span>شرح مبسّط وأمثلة</span><b>اكتشف الدروس ←</b></button>
+        <button class="feature-card" data-goto="quiz"><span class="feature-icon peach">✓</span><strong>حلّ اختبارًا</strong><span>اختبر فهمك فورًا</span><b>ابدأ الاختبار ←</b></button>
+        <button class="feature-card" data-goto="tutor"><span class="feature-icon mint">✧</span><strong>اسأل المساعد</strong><span>اكتب سؤالك الدراسي</span><b>اسأل الآن ←</b></button>
+      </div>
+      <p class="notice"><strong>ملاحظة:</strong> هذه نسخة تجريبية تعليمية. البيانات تحفظ في هذا المتصفح فقط، وليست حسابات مشتركة عبر الإنترنت.</p>
+    </section>
+
+    <section class="page-section hidden" id="lessonsPage">
+      <div class="section-heading"><div><span class="eyebrow">مكتبة المعرفة</span><h2>الدروس التعليمية</h2><p>اختر درسًا، اقرأ الشرح، ثم جرّب سؤال المراجعة.</p></div></div>
+      <div class="filter-row"><label for="subjectFilter">المادة</label><select id="subjectFilter"><option value="all">كل المواد</option><option value="علوم">العلوم</option><option value="رياضيات">الرياضيات</option><option value="لغة عربية">اللغة العربية</option></select></div>
+      <div class="lesson-layout"><div class="lesson-list" id="lessonList"></div><article class="lesson-reader" id="lessonReader"><div class="reader-empty"><span>▤</span><h3>اختر درسًا لتبدأ</h3><p>سيظهر الشرح هنا.</p></div></article></div>
+    </section>
+
+    <section class="page-section hidden" id="quizPage">
+      <div class="section-heading"><div><span class="eyebrow">تحدّي نفسك</span><h2>اختبار سريع</h2><p>أجب عن الأسئلة الثلاثة ثم راجع نتيجتك.</p></div></div>
+      <div class="quiz-card" id="quizCard"></div>
+    </section>
+
+    <section class="page-section hidden" id="tutorPage">
+      <div class="section-heading"><div><span class="eyebrow">اسأل دون تردّد</span><h2>المساعد التعليمي</h2><p>اكتب سؤالًا، وسنساعدك على البدء في فهمه.</p></div></div>
+      <div class="tutor-layout">
+        <div class="tutor-intro"><div class="tutor-avatar">✧</div><h3>مساعدك الدراسي</h3><p>اطلب شرح فكرة أو مثالًا مبسّطًا أو سؤالًا للتدريب.</p><div class="notice warning">هذه نسخة تجريبية بردود تعليمية محلية وليست متصلة بنموذج ذكاء اصطناعي حقيقي.</div><div class="prompt-chips"><button data-prompt="اشرح لي التمثيل الضوئي ببساطة">اشرح لي التمثيل الضوئي</button><button data-prompt="كيف أحسب مساحة المستطيل؟">مساحة المستطيل</button><button data-prompt="ما الفرق بين الفعل والاسم؟">الاسم والفعل</button></div></div>
+        <div class="chat-panel"><div class="chat-messages" id="chatMessages"><div class="chat-bubble assistant"><strong>المساعد</strong><p>أهلًا بك! 😊 اكتب سؤالك الدراسي أو اختر أحد الأمثلة.</p></div></div><form id="chatForm" class="chat-form"><input id="chatInput" placeholder="اكتب سؤالك هنا..." autocomplete="off" required><button class="btn btn-primary" type="submit">إرسال ↑</button></form></div>
+      </div>
+    </section>
+
+    <section class="page-section hidden" id="teacherPage">
+      <div class="section-heading"><div><span class="eyebrow">مساحة إدارة المحتوى</span><h2>لوحة المدرّس</h2><p>أضف دروسًا وأسئلة تجريبية لهذه النسخة من الموقع.</p></div><span class="demo-badge">وضع تجريبي</span></div>
+      <div class="notice warning"><strong>تنبيه:</strong> لا توجد حماية دخول حقيقية هنا. لا تستخدم هذه اللوحة لنشر بيانات خاصة أو منح صلاحيات حقيقية قبل إضافة خادم وتسجيل دخول آمن.</div>
+      <div class="teacher-grid">
+        <form class="panel form-panel" id="addLessonForm"><h3>＋ إضافة درس</h3><label>عنوان الدرس<input name="title" required maxlength="90" placeholder="مثال: حالات المادة"></label><label>المادة<select name="subject"><option>علوم</option><option>رياضيات</option><option>لغة عربية</option></select></label><label>الشرح<textarea name="body" rows="5" required placeholder="اكتب شرح الدرس هنا..."></textarea></label><button class="btn btn-primary" type="submit">حفظ الدرس</button></form>
+        <form class="panel form-panel" id="addQuestionForm"><h3>＋ إضافة سؤال اختبار</h3><label>السؤال<input name="question" required maxlength="180" placeholder="اكتب السؤال"></label><label>الاختيار الصحيح<input name="answer" required maxlength="100" placeholder="الإجابة الصحيحة"></label><label>اختيار آخر<input name="wrong" required maxlength="100" placeholder="إجابة غير صحيحة"></label><label>المادة<select name="subject"><option>علوم</option><option>رياضيات</option><option>لغة عربية</option></select></label><button class="btn btn-primary" type="submit">حفظ السؤال</button></form>
+      </div>
+      <div class="panel saved-content"><h3>المحتوى المضاف</h3><div id="teacherContent"></div></div>
+    </section>
+  </main>
+
+  <footer><div class="footer-brand"><span class="brand-mark">M</span><strong>Mr.Osama Ibrahim</strong></div><p>منصة تعليمية تجريبية — التعلّم حق للجميع.</p><small>© <span id="year"></span> Mr.Osama Ibrahim</small></footer>
+
+  <dialog id="profileDialog" class="profile-dialog"><form method="dialog" id="profileForm"><button class="dialog-close" aria-label="إغلاق">×</button><span class="eyebrow">ملف الطالب</span><h2>أهلًا بك!</h2><p>اكتب اسمًا مستعارًا لعرضه على جهازك.</p><label>اسم الطالب<input id="studentName" maxlength="40" placeholder="مثال: نور" autocomplete="nickname"></label><button class="btn btn-primary full" id="saveProfile" value="save">حفظ الملف</button><small>لا يُنشئ هذا حسابًا عبر الإنترنت ولا يطلب كلمة مرور.</small></form></dialog>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="script.js"></script>
+</body>
+</html>
