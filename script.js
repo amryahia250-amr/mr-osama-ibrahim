@@ -1,12 +1,12 @@
 // إعداد الاتصال بـ Supabase
 // استبدل القيمتين التاليتين ببيانات مشروعك العامة.
 const SUPABASE_URL = 'https://wxredoodfydiujletyse.supabase.co/rest/v1/';
-const SUPABASE_KEY = 'sb_secret_qoi1vc5a0lJ4gewFjzGubw_EHRhW8Nh';
+const SUPABASE_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind4cmVkb29kZnlkaXVqbGV0eXNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIxMjY1MzcsImV4cCI6MjEwNzcwMjUzN30.61rwFhTV6rTAEWEeOGmZscVyFNPYwIeG7GGgfrPokbo';
 
 const configured =
   SUPABASE_URL.startsWith('https://wxredoodfydiujletyse.supabase.co/rest/v1/') &&
   !SUPABASE_URL.includes('https://wxredoodfydiujletyse.supabase.co/rest/v1/') &&
-  !SUPABASE_KEY.includes('sb_secret_qoi1vc5a0lJ4gewFjzGubw_EHRhW8Nh');
+  !SUPABASE_KEY.includes('eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Ind4cmVkb29kZnlkaXVqbGV0eXNlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTIxMjY1MzcsImV4cCI6MjEwNzcwMjUzN30.61rwFhTV6rTAEWEeOGmZscVyFNPYwIeG7GGgfrPokbo');
 
 const db = configured && window.supabase
   ? window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY)
